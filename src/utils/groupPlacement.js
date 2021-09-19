@@ -45,9 +45,6 @@ export const groupPlacement = (flat, leng, maxfree) => {
       return true;
     } else console.log('NÖÖÖÖÖÖ', i);
   }
-
-  console.log(emptySeats.length, maxfree);
-
   if (emptySeats.length - maxfree >= leng)
     return flat.reduce(reducer2, firstIndex);
   else return flat.reduce(reducer, firstIndex);

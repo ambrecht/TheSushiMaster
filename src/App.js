@@ -70,9 +70,7 @@ export default function App() {
           update={GroupUpdate.length >= 1 ? true : false}
         ></GroupForm>
       )}
-      {Groups && (
-        <Group ID={Index} group={Groups} onRemove={removeGroup}></Group>
-      )}
+      <Group ID={Index} group={Groups} onRemove={removeGroup}></Group>
     </div>
   );
 }
