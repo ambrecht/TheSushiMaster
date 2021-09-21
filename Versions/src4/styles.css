@@ -1,0 +1,17 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.groupContainer {
+  margin: 0 auto;
+}
+
+ul.grouplist {
+  background-color: rgb(14, 231, 159);
+  list-style-type: none;
+}
+
+ul.grouplist li {
+  float: left;
+  margin: 1rem;
+}

@@ -11,12 +11,11 @@ export default function TableForm({ onCreateTable, Table }) {
   const onChange = (e) => setInput(e.currentTarget.value);
   return (
     <div>
-      Wie groß ist der Tisch des Meisters heute?
       <input type="Number" min="1" onChange={onChange} />
       {Input < 1 ? (
         <p>{warn}</p>
       ) : (
-        <button onClick={clickHandler}>Plätze eröffnen</button>
+        <button onClick={clickHandler}>Tisch erstellen</button>
       )}
     </div>
   );

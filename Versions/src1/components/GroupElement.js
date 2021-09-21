@@ -3,11 +3,13 @@ import { FaChair } from 'react-icons/fa';
 
 export default function GroupElement({ groupId, seat, group }) {
   return (
-    <>
+    <div>
       Gruppe {groupId}:
       {group.map((e, i) => (
-        <FaChair key={i} size={32} color={e === 'empty' ? 'grey' : 'red'} />
+        <li>
+          <FaChair size={32} color={seat ? 'grey' : 'red'} />
+        </li>
       ))}
-    </>
+    </div>
   );
 }

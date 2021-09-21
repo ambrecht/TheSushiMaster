@@ -1,5 +1,3 @@
-//This masterpiece comes from Scott Sauyet, who used it in response to a question at Stackoverflow.
-
 const longestStreak = (pred) => (xs) =>
   xs.reduce(
     ({ max, curr }, x) =>
@@ -10,5 +8,7 @@ const longestStreak = (pred) => (xs) =>
   ).max;
 
 export function maxSeatCalculator(table) {
-  return longestStreak((s) => s === 0 || s === 'empty')(table);
+  return longestStreak((s) => s == 0 || s == 'empty')(
+    table.flatMap((groups) => groups.map((g) => g.group)),
+  );
 }
