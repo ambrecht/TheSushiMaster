@@ -23,7 +23,7 @@ export default function Groupform({
   const onChange = (e) => {
     e.currentTarget.value <= tablelenght
       ? setInput(e.currentTarget.value)
-      : setInput(tablelenght);
+      : setInput(tablelenght - counter);
   };
   return (
     <div>

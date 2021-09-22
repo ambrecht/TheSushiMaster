@@ -12,8 +12,8 @@ export default function GroupCreator({
     <div className="groupContainer">
       {nestGroups.map((group, i, arr) => (
         <section key={i}>
-          <ul className="grouplist">
-            <div>
+          <ul key={i} className="grouplist">
+            <div key={i}>
               <GroupElement groupId={i + 1} group={group}></GroupElement>
               {`Gruppe ${group[0]}`}
               {!group.includes('empty') && (

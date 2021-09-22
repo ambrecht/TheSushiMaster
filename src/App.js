@@ -23,9 +23,11 @@ export default function App() {
   const [Index, setIndex] = useState(1);
   const [UpdateStatus, setUpdateStatus] = useState(false);
   const [MaxSeatRow, setMaxSeatRow] = useState(0);
+  const [EmptySeats, setEmptySeats] = useState(0);
 
   useEffect(() => {
     setMaxSeatRow(maxSeatCalculator(Groups));
+    setEmptySeats(Groups.filter((seat) => seat === 'empty'));
   }, [Groups]);
 
   //Determines the table size
@@ -52,18 +54,26 @@ export default function App() {
     const groupLength = Groups.filter((g) => g === GroupID);
     setGroups(remove);
     setUpdateStatus(true);
+    setEmptySeats(Groups.filter((seat) => seat === 'empty'));
     setSeatCounter(SeatCounter - groupLength.length);
   };
 
   //Updates the groups when the table is full and the first groups leave it.
   const updateGroups = (GroupLength) => {
-    setSeatCounter(SeatCounter + GroupLength);
-    if (SeatCounter + GroupLength > Table.length)
+    console.log(
+      'Empty',
+      Groups.length + GroupLength - EmptySeats.length <= Table.length,
+    );
+    console.log(Groups.length, GroupLength, Table.length, SeatCounter);
+    if (Groups.length + GroupLength - EmptySeats.length > Table.length)
       console.log('Der Meister hat keinen Platz...');
-    else {
+    else if (GroupLength > MaxSeatRow)
+      console.log('Nicht genug Plätze in einer Reihe');
+    else if (Groups.length + GroupLength - EmptySeats.length <= Table.length) {
+      console.log('Platziere Gäste');
+      setSeatCounter(SeatCounter + GroupLength);
       setIndex(() => Index + 1);
-      const update = updateGroup(Groups, GroupLength, Index);
-      setGroups(update);
+      setGroups(updateGroup(Groups, GroupLength, Index));
     }
   };
 
