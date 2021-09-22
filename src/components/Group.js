@@ -16,7 +16,9 @@ export default function GroupCreator({
             <div>
               <GroupElement groupId={i + 1} group={group}></GroupElement>
               {`Gruppe ${group[0]}`}
-              <button onClick={() => onRemove(group[0])}>remove</button>
+              {!group.includes('empty') && (
+                <button onClick={() => onRemove(group[0])}>remove</button>
+              )}
             </div>
           </ul>
         </section>
