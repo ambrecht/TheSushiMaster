@@ -96,6 +96,7 @@ export default function App() {
         <TableForm onCreateTable={saveTable}></TableForm>
       )}
       <Group ID={Index} groups={Groups} onRemove={removeGroup}></Group>
+      <p>Arrayübersicht: {`[${Groups}]`}</p>
     </div>
   );
 }
