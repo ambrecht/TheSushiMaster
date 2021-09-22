@@ -14,7 +14,6 @@ export default function Groupform({
   const messager = () => (counter < tablelenght ? placeholder2 : placeholder3);
 
   const clickHandler = () => {
-    console.log(tablelenght - counter, Input);
     tablelenght - counter >= Input ? setInput(Input) : setInput('');
     onUpdateGroup(Number(Input));
   };
