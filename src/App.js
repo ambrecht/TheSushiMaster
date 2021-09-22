@@ -61,6 +61,7 @@ export default function App() {
     if (SeatCounter + GroupLength > Table.length)
       console.log('Der Meister hat keinen Platz...');
     else {
+      setIndex(() => Index + 1);
       const update = updateGroup(Groups, GroupLength, Index);
       setGroups(update);
     }
