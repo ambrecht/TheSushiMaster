@@ -60,11 +60,6 @@ export default function App() {
 
   //Updates the groups when the table is full and the first groups leave it.
   const updateGroups = (GroupLength) => {
-    console.log(
-      'Empty',
-      Groups.length + GroupLength - EmptySeats.length <= Table.length,
-    );
-    console.log(Groups.length, GroupLength, Table.length, SeatCounter);
     if (Groups.length + GroupLength - EmptySeats.length > Table.length)
       console.log('Der Meister hat keinen Platz...');
     else if (GroupLength > MaxSeatRow)
