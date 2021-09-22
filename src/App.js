@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import TableForm from './components/TableForm';
 import GroupForm from './components/GroupForm';
+import UpdateForm from './components/UpdateForm';
 import Group from './components/Group';
 import { createGroup } from './utils/createGroup';
 import { updateGroup } from './utils/updateGroup';
 import { maxSeatCalculator } from './utils/maxSeatCalculator';
+import './styles.css';
 
 export default function App() {
   //The entire state of the application is located here
@@ -16,9 +18,9 @@ export default function App() {
   const [MaxSeatRow, setMaxSeatRow] = useState(0);
 
   useEffect(() => {
-    console.log(Groups);
+    console.log(UpdateStatus);
     setMaxSeatRow(maxSeatCalculator(Groups));
-  }, [Groups, MaxSeatRow]);
+  }, [Groups, UpdateStatus]);
 
   //Determines the table size
   const saveTable = (MaxLength) => {
@@ -41,13 +43,14 @@ export default function App() {
 
   //Updates the groups when the table is full and the first groups leave it.
   const updateGroups = (GroupLength) => {
+    setSeatCounter(SeatCounter + GroupLength);
     if (SeatCounter + GroupLength > Table.length)
       console.log('Der Meister hat keinen Platz...');
     else {
       const update = updateGroup(Groups, GroupLength, Index);
-      setSeatCounter(SeatCounter + GroupLength);
+
       console.log('Update', update);
-      setGroups(updateGroup(update));
+      setGroups(update);
     }
   };
   const removeGroup = (GroupID) => {
@@ -60,8 +63,8 @@ export default function App() {
   };
 
   return (
-    <div>
-      {Table.length > 0 ? (
+    <div className="App">
+      {Table.length > 0 && !UpdateStatus ? (
         <GroupForm
           onUpdateGroup={updateGroups}
           onCreateGroup={saveGroup}
@@ -70,6 +73,15 @@ export default function App() {
           maxseatrow={MaxSeatRow}
           tablelenght={Table.length}
         ></GroupForm>
+      ) : UpdateStatus ? (
+        <UpdateForm
+          onUpdateGroup={updateGroups}
+          onCreateGroup={saveGroup}
+          counter={SeatCounter}
+          update={UpdateStatus}
+          maxseatrow={MaxSeatRow}
+          tablelenght={Table.length}
+        ></UpdateForm>
       ) : (
         <TableForm onCreateTable={saveTable}></TableForm>
       )}

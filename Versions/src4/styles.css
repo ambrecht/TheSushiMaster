@@ -1,9 +1,11 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  background-color: black;
 }
 .groupContainer {
   margin: 0 auto;
+  background-color: red;
 }
 
 ul.grouplist {

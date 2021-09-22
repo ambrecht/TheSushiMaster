@@ -2,3 +2,17 @@
   font-family: sans-serif;
   text-align: center;
 }
+.groupContainer {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+ul.grouplist {
+  float: left;
+  list-style-type: none;
+}
+
+ul.grouplist li {
+  margin: 0.2rem;
+}

@@ -9,32 +9,29 @@ export default function Groupform({
   tablelenght,
 }) {
   const [Input, setInput] = useState(1);
-  const placeholder1 = `Der Meister kann ${
-    tablelenght - counter || 0
-  } Plätze belegen`;
-  const placeholder2 = `Gruppe von ${Input} erstellen`;
+  const placeholder2 = `Der Meister hat ${maxseatrow} freie Plätze in einer Reihe`;
   const placeholder3 = `Alle Plätze belegt, der Meister wartet das eine Gruppe ihren Platz verlässt`;
+  const messager = () => (counter < tablelenght ? placeholder2 : placeholder3);
 
   const clickHandler = () => {
-    counter === tablelenght ? setInput('') : setInput(Input);
-    onCreateGroup(Number(Input));
+    console.log(tablelenght - counter, Input);
+    tablelenght - counter >= Input ? setInput(Input) : setInput('');
+    onUpdateGroup(Number(Input));
   };
 
   const onChange = (e) => {
-    e.currentTarget.value <= tablelenght
+    e.currentTarget.value <= maxseatrow
       ? setInput(e.currentTarget.value)
-      : setInput(tablelenght);
+      : setInput(maxseatrow);
   };
   return (
     <div>
-      {counter < tablelenght ? (
-        <div>
-          {placeholder1}
+      {messager()}
+      {counter < tablelenght && (
+        <>
           <input type="number" min="1" value={Input} onChange={onChange} />
-          <button onClick={clickHandler}>{placeholder2}</button>
-        </div>
-      ) : (
-        placeholder3
+          <button onClick={clickHandler}>Gruppen Update</button>
+        </>
       )}
     </div>
   );
