@@ -37,7 +37,7 @@ export default function App() {
 
   //Creates and places the different groups then adds an ID to each group
   const saveGroup = (GroupLength) => {
-    if (SeatCounter + GroupLength > Table.length)
+    if (EmptySeats.length === 0 && Groups.length === Table.length)
       console.log('Der Meister hat keinen Platz...');
     else {
       const newGroup = createGroup(GroupLength, Index);
@@ -60,8 +60,7 @@ export default function App() {
 
   //Updates the groups when the table is full and the first groups leave it.
   const updateGroups = (GroupLength) => {
-    if (Groups.length + GroupLength - EmptySeats.length > Table.length)
-      console.log('Der Meister hat keinen Platz...');
+    if (EmptySeats.length === 0) console.log('Der Meister hat keinen Platz...');
     else if (GroupLength > MaxSeatRow)
       console.log('Nicht genug Plätze in einer Reihe');
     else if (Groups.length + GroupLength - EmptySeats.length <= Table.length) {

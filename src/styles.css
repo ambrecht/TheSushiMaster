@@ -1,5 +1,6 @@
 .App {
   font-family: sans-serif;
+  font-size: 1rem;
   text-align: center;
 }
 .groupContainer {
@@ -9,8 +10,11 @@
 }
 
 ul.grouplist {
-  float: left;
+  display: inline;
   list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
 }
 
 ul.grouplist li {
