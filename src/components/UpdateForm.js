@@ -7,9 +7,10 @@ export default function Groupform({
   counter,
   maxseatrow,
   tablelenght,
+  empty,
 }) {
   const [Input, setInput] = useState(1);
-  const placeholder2 = `Der Meister hat ${maxseatrow} freie Plätze in einer Reihe`;
+  const placeholder2 = `Der Meister hat insgesamt ${empty} frei Plätze und davon ${maxseatrow} in einer Reihe`;
   const placeholder3 = `Alle Plätze belegt, der Meister wartet das eine Gruppe ihren Platz verlässt`;
   const messager = () => (counter < tablelenght ? placeholder2 : placeholder3);
 

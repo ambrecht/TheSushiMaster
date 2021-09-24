@@ -90,6 +90,7 @@ export default function App() {
           update={UpdateStatus}
           maxseatrow={MaxSeatRow}
           tablelenght={Table.length}
+          empty={EmptySeats.length}
         ></UpdateForm>
       ) : (
         <TableForm onCreateTable={saveTable}></TableForm>
